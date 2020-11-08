@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="lean_request_adjust_tz" model="ir.cron">
+            <field name="name">Request Adjust Time Zone</field>
+            <field name="model_id" ref="model_lean_request"/>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall">0</field>
+            <field name="nextcall" eval="(DateTime.now() - timedelta(hours=1)).strftime('%Y-%m-%d 12:00:00')"/>
+            <field name="code">model.adjust_cron_timezone()</field>
+            <field name="state">code</field>
+
+        </record>
+    </data>
+
+</odoo>
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="action_lean_request" model="ir.actions.act_window">
+            <field name="name">Requests</field>
+            <field name="res_model">lean.request</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Requests"
+                  id="menu_main_request"
+                  web_icon="requests,static/description/icon.png"
+                  sequence="50"
+                  action="action_lean_request"
+        groups = "requests.group_requester,requests.group_service_responsible"
+        />
+
+
+    </data>
+</odoo>

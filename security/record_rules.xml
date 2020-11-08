@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--        View Permission-->
+        <record model="ir.rule" id="request_requester_rule_view">
+            <field name="name">See Only Own Requests</field>
+            <field name="model_id" ref="model_lean_request"/>
+            <field name="groups" eval="[(4, ref('requests.group_requester'))]"/>
+
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="0" name="perm_create"/>
+            <field eval="0" name="perm_unlink"/>
+            <field name="domain_force">
+                [('create_uid', '=', user.id)]
+            </field>
+        </record>
+
+        <record model="ir.rule" id="request_service_responsible_rule_view">
+            <field name="name">See All Requests</field>
+            <field name="model_id" ref="model_lean_request"/>
+            <field name="groups" eval="[(4, ref('requests.group_service_responsible'))]"/>
+
+            <field eval="1" name="perm_read"/>
+            <field eval="0" name="perm_write"/>
+            <field eval="0" name="perm_create"/>
+            <field eval="0" name="perm_unlink"/>
+            <field name="domain_force">
+                [(1, '=', 1)]
+            </field>
+        </record>
+
+        <!--        End View Permission -->
+
+
+        <!--        Edit Permission -->
+        <record model="ir.rule" id="request_requester_rule_edit">
+            <field name="name">Edit or Delete Only when state is Draft</field>
+            <field name="model_id" ref="model_lean_request"/>
+            <field name="groups" eval="[(4, ref('requests.group_requester'))]"/>
+
+            <field eval="1" name="perm_write"/>
+            <field eval="0" name="perm_read"/>
+            <field eval="1" name="perm_create"/>
+            <field eval="1" name="perm_unlink"/>
+            <field name="domain_force">
+                [('state', '=', 'draft')]
+            </field>
+        </record>
+
+        <record model="ir.rule" id="request_service_responsible_rule_edit">
+            <field name="name">Edit Only when state is Under Review</field>
+            <field name="model_id" ref="model_lean_request"/>
+            <field name="groups" eval="[(4, ref('requests.group_service_responsible'))]"/>
+
+            <field eval="1" name="perm_read"/>
+            <field eval="1" name="perm_write"/>
+            <field eval="0" name="perm_create"/>
+            <field eval="0" name="perm_unlink"/>
+            <field name="domain_force">
+                [('state', '=', 'review')]
+            </field>
+        </record>
+        <!--       End  Edit Permission -->
+
+
+    </data>
+</odoo>

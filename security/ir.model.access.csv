@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lean_request_requester,access_lean_request_requester,model_lean_request,requests.group_requester,1,1,1,1
+access_lean_request_service_responsible,access_lean_request_service_responsible,model_lean_request,requests.group_service_responsible,1,1,0,0
